@@ -1,0 +1,20 @@
+#!sh
+#timeout=999999
+#maxlength=999999
+installerUrl="https://pcsworryfreeit.screenconnect.com/Bin/ScreenConnect.ClientSetup.sh?e=Access&y=Guest"
+configScriptPath="/tmp/config.sh"
+
+if ! curl -L --silent -o "$configScriptPath" "$installerUrl"; then
+    echo "ERROR: Failed to download ScreenConnect."
+    exit 1
+fi
+
+if ! chmod +x "$configScriptPath"; then
+    echo "ERROR: Failed to set permissions."
+    exit 1
+fi
+
+if ! sudo "$configScriptPath"; then
+    echo "ERROR: Failed to install $configScriptPath."
+    exit 1
+fi
