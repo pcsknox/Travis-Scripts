@@ -1,0 +1,10 @@
+#!ps
+#maxlength=50000
+#timeout=90000
+$path = "C:\Windows\LTSvc"
+if (Test-Path $path) {
+Write-Output $True
+}
+else {
+Write-Output $False
+}
