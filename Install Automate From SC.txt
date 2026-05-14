@@ -1,4 +1,0 @@
-#!ps
-#maxlength=50000
-#timeout=90000
-Remove-Item -ErrorAction SilentlyContinue -Force -Recurse -Path "C:\Windows\Temp\Agent"; New-Item -ItemType Directory -Force -Path C:\Windows\Temp\Agent; irm "<token_url>" -OutFile "C:\Windows\Temp\Agent\Install.zip"; Expand-Archive -Path "C:\Windows\Temp\Agent\Install.zip" -DestinationPath "C:\Windows\Temp\Agent\Install" -Force; MsiExec.exe /i "C:\Windows\Temp\Agent\Install\Agent_Install.msi" TRANSFORMS="C:\Windows\Temp\Agent\Install\Agent_Install.mst" /qn
