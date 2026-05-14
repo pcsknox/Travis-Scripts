@@ -1,0 +1,4 @@
+#!ps
+#maxlength=50000
+#timeout=90000
+irm -Uri "https://pcsworryfreeit.screenconnect.com/Bin/ScreenConnect.ClientSetup.msi?e=Access&y=Guest&c=AxleLogistics&c=&c=&c=&c=&c=&c=&c=" -OutFile "C:\Windows\Temp\ScreenConnect.ClientSetup.msi" | MsiExec.exe /i "C:\Windows\Temp\ScreenConnect.ClientSetup.msi" /qn
