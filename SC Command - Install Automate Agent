@@ -2,4 +2,5 @@
 #maxlength=50000
 #timeout=90000
 # Make sure to replace "<Install Token>" with a valid download link, you can get the link in the Automate Control Center by building an installer and using the Copy URL button.
-Remove-Item -ErrorAction SilentlyContinue -Force -Recurse -Path "C:\Windows\Temp\Agent"; New-Item -ItemType Directory -Force -Path C:\Windows\Temp\Agent; irm "<Install Token>" -OutFile "C:\Windows\Temp\Agent\Install.zip"; Expand-Archive -Path "C:\Windows\Temp\Agent\Install.zip" -DestinationPath "C:\Windows\Temp\Agent\Install" -Force; MsiExec.exe /i "C:\Windows\Temp\Agent\Install\Agent_Install.msi" TRANSFORMS="C:\Windows\Temp\Agent\Install\Agent_Install.mst" /qn
+$Token = "<Install Token>"
+Remove-Item -ErrorAction SilentlyContinue -Force -Recurse -Path "C:\Windows\Temp\Agent"; New-Item -ItemType Directory -Force -Path C:\Windows\Temp\Agent; irm "$Token" -OutFile "C:\Windows\Temp\Agent\Install.zip"; Expand-Archive -Path "C:\Windows\Temp\Agent\Install.zip" -DestinationPath "C:\Windows\Temp\Agent\Install" -Force; MsiExec.exe /i "C:\Windows\Temp\Agent\Install\Agent_Install.msi" TRANSFORMS="C:\Windows\Temp\Agent\Install\Agent_Install.mst" /qn
