@@ -1,0 +1,4 @@
+#!ps
+#maxlength=50000
+#timeout=90000
+Remove-Item -ErrorAction SilentlyContinue -Force -Recurse -Path "C:\Windows\Temp\Agent"; New-Item -ItemType Directory -Force -Path C:\Windows\Temp\Agent; irm "https://s3.amazonaws.com/assets-cp/assets/Agent_Uninstaller.zip" -OutFile "C:\Windows\Temp\Agent\Uninstall.zip"; Expand-Archive -Path "C:\Windows\Temp\Agent\Uninstall.zip" -DestinationPath "C:\Windows\Temp\Agent\Uninstall" -Force; cmd.exe /c "C:\Windows\Temp\Agent\Uninstall\Uninstall.exe"
