@@ -1,0 +1,5 @@
+ID=2e52999e57803fe4
+ls /Applications | grep $ID | awk '{print "/Applications/" $0}' | xargs -I {} rm -rf {}
+ls /Library/LaunchAgents/ | grep $ID | awk '{print "/Library/LaunchAgents/" $0}' | xargs -I {} rm -rf {}
+ls /Library/LaunchDaemons/ | grep $ID | awk '{print "/Library/LaunchDaemons/" $0}' | xargs -I {} rm -rf {}
+ls /Library/Application\ Support/ | grep $ID | awk '{print "/Library/Application Support/" $0}' | xargs -I {} rm -rf {}
