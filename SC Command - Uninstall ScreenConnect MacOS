@@ -1,3 +1,7 @@
+#!sh
+#timeout=999999
+#maxlength=999999
+# Remember to change the ID to the version of ScreenConnect you want to uninstall.
 ID=2e52999e57803fe4
 ls /Applications | grep $ID | awk '{print "/Applications/" $0}' | xargs -I {} rm -rf {}
 ls /Library/LaunchAgents/ | grep $ID | awk '{print "/Library/LaunchAgents/" $0}' | xargs -I {} rm -rf {}
