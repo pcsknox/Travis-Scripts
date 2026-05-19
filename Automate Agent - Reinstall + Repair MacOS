@@ -1,0 +1,46 @@
+#!sh
+#timeout=999999
+#maxlength=999999
+
+# Variables
+installerToken="token" #This needs to be replaced if you run it for any other location machines
+redirHostName="pcsknox.hostedrmm.com"
+installerUrl="https://${redirHostName}/LabTech/Deployment.aspx?InstallerToken=${installerToken}"
+installerZipPath="/tmp/LTechAgent.zip"
+installerPkgPath="/tmp/LTSvc.mpkg"
+configScriptPath="/tmp/config.sh"
+uninstallerPath="/usr/local/ltechagent/uninstaller.sh"
+
+# Uninstall existing agent
+if [ -f "$uninstallerPath" ]; then
+    sh "$uninstallerPath"
+else
+    echo "WARNING: Uninstaller not found at $uninstallerPath, skipping."
+fi
+
+# Download installer
+if ! curl -L --silent -o "$installerZipPath" "$installerUrl"; then
+    echo "ERROR: Failed to download LTech Agent."
+    exit 1
+fi
+
+# Unzip installer
+if ! unzip -o "$installerZipPath" -d /tmp/; then
+    echo "ERROR: Failed to unzip $installerZipPath."
+    exit 1
+fi
+
+# Set permissions
+if ! chmod +x "$configScriptPath" "$installerPkgPath"; then
+    echo "ERROR: Failed to set permissions."
+    exit 1
+fi
+
+# Display config
+cat "$configScriptPath"
+
+# Install
+if ! sudo installer -pkg "$installerPkgPath" -target /; then
+    echo "ERROR: Failed to install $installerPkgPath."
+    exit 1
+fi
