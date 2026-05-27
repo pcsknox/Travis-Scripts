@@ -2,7 +2,7 @@
 #timeout=999999
 #maxlength=999999
 installerUrl="https://pcsworryfreeit.screenconnect.com/Bin/ScreenConnect.ClientSetup.sh?e=Access&y=Guest"
-configScriptPath="/tmp/config.sh"
+configScriptPath="/tmp/screenconnect.sh"
 
 if ! curl -L --silent -o "$configScriptPath" "$installerUrl"; then
     echo "ERROR: Failed to download ScreenConnect."
