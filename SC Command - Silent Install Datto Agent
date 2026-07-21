@@ -1,0 +1,4 @@
+#!ps
+#maxlength=50000
+#timeout=90000
+Remove-Item -ErrorAction SilentlyContinue -Force -Recurse -Path "C:\Windows\Temp\Datto"; New-Item -ItemType Directory -Force -Path C:\Windows\Temp\Datto; irm "https://cf-dl.datto.com/dwa/DattoWindowsAgent.exe" -OutFile "C:\Windows\Temp\Datto\Install.exe"; Start-Process "C:\Windows\Temp\Datto\Install.exe" -ArgumentList "/quiet /norestart"
