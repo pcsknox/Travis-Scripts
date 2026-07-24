@@ -1,5 +1,5 @@
 #!ps
 #maxlength=50000
 #timeout=90000
-$SCID = '52c2c7330db71ef5'
+$SCID = '<Insert ID>'
 Get-WmiObject -Query "SELECT * FROM Win32_Product WHERE Name LIKE 'ScreenConnect Client ($SCID)%'" | ForEach-Object { $_.Uninstall() }
