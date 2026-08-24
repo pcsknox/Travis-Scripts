@@ -1,0 +1,1 @@
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -Command "$file1_path = 'C:\Temp\AxleGraphics\file1.png'; $file2_path = 'C:\Temp\AxleGraphics\file2.png'; $file1_exists = Test-Path -Path $file1_path; $file2_exists = Test-Path -Path $file2_path; if ($file1_exists -and $file2_exists) { Write-Host 'True' } else { Write-Host 'False' }"
